@@ -50,6 +50,10 @@ $("#searchBtn").on("click", function (event) {
     })
 })
 
+// Top Articles section clears when the "clear results" button is clicked
+$("#clearBtn").on("click", function () {
+    $("#results-section").empty();
+    $("#results-section").attr("class", "hide");
+})
 // Use moment.js to fix date display in results
 // Add Start Year and End Year into ajax call for search parameters
-// Add functionality to clear results btn
