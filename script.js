@@ -1,3 +1,4 @@
+// Function kicks off when search button is clicked
 $("#searchBtn").on("click", function (event) {
     event.preventDefault();
 
@@ -18,7 +19,7 @@ $("#searchBtn").on("click", function (event) {
     let APIKey = "DzliZA1M6qFMknm0cAveX1iQqQOLOCpy";
     let queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTerm + "&api-key=" + APIKey;
 
-    // AJAX call to retrieve articles
+    // AJAX call to retrieve articles based on search parameters
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -37,7 +38,7 @@ $("#searchBtn").on("click", function (event) {
 
             let headline = $("<h3>").text(articleData[i].headline.main);
             let author = $("<p>").text(articleData[i].byline.original).attr("class", "author");
-            let date = $("<p>").text("Published on " + articleData[i].pub_date).attr("class", "published-date");
+            let date = $("<p>").text("Published on " + moment(articleData[i].pub_date).format('MMMM Do YYYY')).attr("class", "published-date");
             let summary = $("<p>").text(articleData[i].snippet);
             let url = $("<a>").text("Read the full article here.").attr("href", articleData[i].web_url).attr("target", "_blank");
 
@@ -55,5 +56,5 @@ $("#clearBtn").on("click", function () {
     $("#results-section").empty();
     $("#results-section").attr("class", "hide");
 })
-// Use moment.js to fix date display in results
+
 // Add Start Year and End Year into ajax call for search parameters
