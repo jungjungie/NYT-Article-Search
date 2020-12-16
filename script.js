@@ -16,13 +16,27 @@ $("#searchBtn").on("click", function (event) {
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function (articleData) {
-        console.log(articleData);
+    }).then(function (articleResults) {
+        console.log(articleResults.response.docs);
+        let articleData = articleResults.response.docs;
 
-        // headline
-        // author
-        // Publish date
-        // url
-        // snippet
+        // Loop through the results for the number of times set in the search parameters
+        for (let i=0; i < numberOfRecords; i++) {
+
+            // Create a new div and new elements for each search result
+            let resultCard = $("<div>").attr("class", "card p-4 result-cards");
+
+            let headline = $("<h3>").text(articleData[i].headline.main);
+            let author = $("<p>").text(articleData[i].byline.original).attr("class", "author");
+            let date = $("<p>").text("Published on " + articleData[i].pub_date).attr("class", "published-date");
+            let summary = $("<p>").text(articleData[i].snippet);
+            let url = $("<a>").text("Read the full article here.").attr("href", articleData[i].web_url);
+
+            // Append new elements to new resultCard div
+            resultCard.append(headline, author, date, summary, url);
+
+            // Append resultCard div to the "#search-results" div
+            $("#search-results").append(resultCard);
+        }
     })
 })

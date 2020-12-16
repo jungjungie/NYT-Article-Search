@@ -52,7 +52,8 @@ p {
 }
 
 .author {
-    color: #777;
+    color: #610000;
+    margin-bottom: 0;
 }
 
 .published-date {
