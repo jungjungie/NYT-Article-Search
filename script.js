@@ -8,6 +8,12 @@ $("#searchBtn").on("click", function (event) {
     let startYear = $("#start-year").val().trim();
     let endYear = $("#end-year").val().trim();
 
+    // Clear search fields
+    $("#search-term").val("");
+    $("#records").val("");
+    $("#start-year").val("");
+    $("#end-year").val("")
+
     // API Variables
     let APIKey = "DzliZA1M6qFMknm0cAveX1iQqQOLOCpy";
     let queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchTerm + "&api-key=" + APIKey;
@@ -20,6 +26,7 @@ $("#searchBtn").on("click", function (event) {
         console.log(articleResults.response.docs);
         let articleData = articleResults.response.docs;
 
+        // Display the search results section
         $("#results-section").attr("class", "card shadow-sm show");
 
         // Loop through the results for the number of times set in the search parameters
