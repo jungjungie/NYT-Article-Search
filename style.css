@@ -36,3 +36,26 @@ button:hover {
     background: #610000 !important;
     color: white !important; 
 }
+
+/* Search Results */
+
+.result-cards {
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-bottom: 0;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+.author {
+    color: #777;
+}
+
+.published-date {
+    font-style: italic;
+    color: #777;
+}
