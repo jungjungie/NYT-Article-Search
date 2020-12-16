@@ -39,12 +39,21 @@ button:hover {
 
 /* Search Results */
 
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
 .result-cards {
     margin-bottom: 20px;
 }
 
 h3 {
     margin-bottom: 0;
+    color: #610000;
 }
 
 p {
@@ -52,7 +61,6 @@ p {
 }
 
 .author {
-    color: #610000;
     margin-bottom: 0;
 }
 
