@@ -20,6 +20,10 @@ header {
     border-bottom-right-radius: 5px;
 }
 
+header h1 {
+    font-weight: bold;
+}
+
 /* Search Form */
 
 button {
