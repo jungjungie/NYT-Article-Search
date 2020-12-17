@@ -1,3 +1,16 @@
+// Function to clear search form
+function clearForm() {
+    // Clears search fields
+    $("#search-term").val("");
+    $("#records").val("");
+    $("#start-year").val("");
+    $("#end-year").val("")
+
+    // Clears search results
+    $("#search-results").empty();
+    $("#results-section").attr("class", "hide");
+}
+
 // Function kicks off when search button is clicked
 $("#searchBtn").on("click", function (event) {
     event.preventDefault();
@@ -9,11 +22,8 @@ $("#searchBtn").on("click", function (event) {
     let startYear = $("#start-year").val().trim();
     let endYear = $("#end-year").val().trim();
 
-    // Clear search fields
-    $("#search-term").val("");
-    $("#records").val("");
-    $("#start-year").val("");
-    $("#end-year").val("")
+    // Clears the search form and results
+    clearForm();
 
     // API Variables
     let APIKey = "DzliZA1M6qFMknm0cAveX1iQqQOLOCpy";
@@ -52,9 +62,7 @@ $("#searchBtn").on("click", function (event) {
 })
 
 // Top Articles section clears when the "clear results" button is clicked
-$("#clearBtn").on("click", function () {
-    $("#results-section").empty();
-    $("#results-section").attr("class", "hide");
-})
+$("#clearBtn").on("click", clearForm);
 
 // Add Start Year and End Year into ajax call for search parameters
+// Do not have AJAX call kick off if search term and number of records to retrieve are empty
