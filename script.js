@@ -1,5 +1,5 @@
 // Function to clear search form
-function clearForm() {
+function clearResults() {
     // Clears search fields
     $("#search-term").val("");
     $("#records").val("");
@@ -17,13 +17,17 @@ $("#searchBtn").on("click", function (event) {
 
     // HTML Variables
     let searchTerm = $("#search-term").val().trim();
-    console.log(searchTerm);
     let numberOfRecords = $("#records").val().trim();
     let startYear = $("#start-year").val().trim();
     let endYear = $("#end-year").val().trim();
 
     // Clears the search form and results
-    clearForm();
+    clearResults();
+
+    // Exit the function if the search term or number of records fields are empty
+    if (searchTerm === "" || numberOfRecords === "") {
+        return;
+    }
 
     // API Variables
     let APIKey = "DzliZA1M6qFMknm0cAveX1iQqQOLOCpy";
@@ -62,7 +66,6 @@ $("#searchBtn").on("click", function (event) {
 })
 
 // Top Articles section clears when the "clear results" button is clicked
-$("#clearBtn").on("click", clearForm);
+$("#clearBtn").on("click", clearResults);
 
 // Add Start Year and End Year into ajax call for search parameters
-// Do not have AJAX call kick off if search term and number of records to retrieve are empty
