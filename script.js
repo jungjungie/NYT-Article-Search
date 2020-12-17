@@ -23,15 +23,24 @@ $("#searchBtn").on("click", function (event) {
     let startDate = "";
     let endDate = "";
 
-    console.log(startYear);
-    console.log(endYear);
-
     // Exit the function if the search term or number of records fields are empty
-    if (searchTerm === "" || numberOfRecords === "") {
+    if (searchTerm === "" && numberOfRecords === "") {
+        $("#search-term-error").attr("class", "show error-msg");
+        $("#records-error").attr("class", "show error-msg");
+        return;
+    } else if (searchTerm === "") {
+        $("#search-term-error").attr("class", "show error-msg");
+        $("#records-error").attr("class", "hide");
+        return;
+    } else if (numberOfRecords === "") {
+        $("#records-error").attr("class", "show error-msg");
+        $("#search-term-error").attr("class", "hide");
         return;
     }
 
     // Hide any error messages that are showing
+    $("#search-term-error").attr("class", "hide");
+    $("#records-error").attr("class", "hide");
     $("#start-year-error").attr("class", "hide");
     $("#end-year-error").attr("class", "hide");
 
@@ -41,8 +50,8 @@ $("#searchBtn").on("click", function (event) {
 
         endDate = "&end_date=" + endYear + "1231";
         
-        console.log(startDate);
-        console.log(endDate)
+        // console.log(startDate);
+        // console.log(endDate)
     
     // If the start year is filled out but the end year is not, then show an error message
     } else if (startYear !== "" && endYear === "") {

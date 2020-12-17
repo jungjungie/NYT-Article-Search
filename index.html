@@ -35,10 +35,12 @@
             <div class="p-3 pb-1">
                 <label for="search-term" class="form-label">Search Term:</label>
                 <input type="text" class="form-control" id="search-term" aria-describedby="search-term">
+                <p id="search-term-error" class="hide">You must enter a search term.</p>
             </div>
             <div class="p-3 pb-1">
                 <label for="records" class="form-label">Number of Records to Retrieve:</label>
                 <input type="number" class="form-control" id="records" min="0" aria-describedby="records">
+                <p id="records-error" class="hide">You must enter a number of records to retrieve.</p>
             </div>
             <div class="p-3 pb-1">
                 <label for="start-year" class="form-label">Start Year (Optional):</label>
