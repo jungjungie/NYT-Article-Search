@@ -34,6 +34,7 @@ $("#searchBtn").on("click", function (event) {
         return;
     }
 
+    // If the start year and end year fields are not empty, then set the startDate and endDate variables (to be added to the queryURL);
     if (startYear !== "" && endYear !== "") {
         startDate = "&facet_fields=begin_date=" + startYear + "0101";
 
@@ -41,7 +42,17 @@ $("#searchBtn").on("click", function (event) {
         
         console.log(startDate);
         console.log(endDate)
-    } 
+    
+    // If the start year is filled out but the end year is not, then show an error message
+    } else if (startYear !== "" && endYear === "") {
+        $("#end-year-section").append($("<p>").text("You must enter an end year if you have a start year.").attr("class", "error-msg"));
+        return;
+
+    // If the end year is filled out but the start year is not, then show an error message
+    } else if (startYear === "" && endYear !== "") {
+        $("#start-year-section").append($("<p>").text("You must enter a start year if you have an end year.").attr("class", "error-msg"));
+        return;
+    }
 
     // API Variables
     let APIKey = "DzliZA1M6qFMknm0cAveX1iQqQOLOCpy";
