@@ -40,6 +40,7 @@ button:hover {
 .error-msg {
     color: #610000;
     font-size: 14px;
+    margin-bottom: 0;
 }
 
 /* Search Results */
