@@ -96,4 +96,3 @@ $("#searchBtn").on("click", function (event) {
 
 // Top Articles section clears when the "clear results" button is clicked
 $("#clearBtn").on("click", clearResults);
-// Are there are any bugs to fix?
