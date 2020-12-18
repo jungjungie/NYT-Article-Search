@@ -2,7 +2,7 @@
 function clearResults() {
     // Clears search fields
     $("#search-term").val("");
-    $("#records").val("");
+    $("#records").val("1");
     $("#start-year").val("");
     $("#end-year").val("")
 
@@ -17,26 +17,17 @@ $("#searchBtn").on("click", function (event) {
 
     // HTML Variables
     let searchTerm = $("#search-term").val().trim();
-    let numberOfRecords = $("#records").val().trim();
+    let numberOfRecords = $("#records").val();
     let startYear = $("#start-year").val().trim();
     let endYear = $("#end-year").val().trim();
     let startDate = "";
     let endDate = "";
 
-    // Exit the function if the search term or number of records fields are empty
-    if (searchTerm === "" && numberOfRecords === "") {
+    // Show error messages if the search term field is empty
+    if (searchTerm === "") {
         $("#search-term-error").attr("class", "show error-msg");
-        $("#records-error").attr("class", "show error-msg");
         return;
-    } else if (searchTerm === "") {
-        $("#search-term-error").attr("class", "show error-msg");
-        $("#records-error").attr("class", "hide");
-        return;
-    } else if (numberOfRecords === "") {
-        $("#records-error").attr("class", "show error-msg");
-        $("#search-term-error").attr("class", "hide");
-        return;
-    }
+    } 
 
     // Hide any error messages that are showing
     $("#search-term-error").attr("class", "hide");
@@ -90,7 +81,7 @@ $("#searchBtn").on("click", function (event) {
 
             let headline = $("<h3>").text(articleData[i].headline.main);
             let author = $("<p>").text(articleData[i].byline.original).attr("class", "author");
-            let date = $("<p>").text("Published on " + moment(articleData[i].pub_date).format('MMMM Do YYYY')).attr("class", "published-date");
+            let date = $("<p>").text("Published on " + moment(articleData[i].pub_date).format('MMMM Do YYYY')).attr("class", "info-text");
             let summary = $("<p>").text(articleData[i].snippet);
             let url = $("<a>").text("Read the full article here.").attr("href", articleData[i].web_url).attr("target", "_blank");
 
@@ -105,3 +96,4 @@ $("#searchBtn").on("click", function (event) {
 
 // Top Articles section clears when the "clear results" button is clicked
 $("#clearBtn").on("click", clearResults);
+// Are there are any bugs to fix?

@@ -43,6 +43,11 @@ button:hover {
     margin-bottom: 0;
 }
 
+.info-text {
+    color: #777;
+    font-style: italic;
+}
+
 /* Search Results */
 
 .hide {
@@ -68,9 +73,4 @@ p {
 
 .author {
     margin-bottom: 0;
-}
-
-.published-date {
-    font-style: italic;
-    color: #777;
 }
